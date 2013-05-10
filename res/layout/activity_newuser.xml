@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="fill_horizontal"
+    android:background="@drawable/back2"
+    android:orientation="vertical"
+    android:padding="20dp" >
+    
+     <ImageView
+         android:id="@+id/IV_signout"
+         android:layout_width="108dp"
+         android:layout_height="76dp"
+         android:layout_gravity="center_horizontal"
+         android:src="@drawable/create_user" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/login_username"
+                android:textColor="#372c24" />
+
+            <EditText
+                android:id="@+id/createuser_et_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dip"
+                android:layout_marginTop="5dp"
+                android:drawableLeft="@drawable/user"
+                android:singleLine="true" />
+        
+            <!-- Password Label -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/login_pass"
+                android:textColor="#372c24" />
+
+            <EditText
+                android:id="@+id/createuser_et_pass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/pass"
+                android:ems="10"
+                android:inputType="textPassword" >
+
+                <requestFocus />
+            </EditText>
+            <!-- Login button -->
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/createuser_pass2"
+                android:textColor="#372c24" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/createuser_pass2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/pass"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+
+                <ImageButton
+                    android:id="@+id/createuser_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/clear" />
+
+            </LinearLayout>
+
+            <!-- Link to Registration Screen -->
+
+            <Button
+                android:id="@+id/createuser_btn_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:text="@string/register_btn" />
+
+</LinearLayout>

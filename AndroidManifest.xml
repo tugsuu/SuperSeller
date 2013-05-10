@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mn.aurora.seller"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="7" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="mn.aurora.seller.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="mn.aurora.seller.FirstActivity"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.ShopActivity"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.ProductActivity"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.CreateUserActivity"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.LoginActivity"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.SellProduct"
+            ></activity>
+        <activity 
+            android:name="mn.aurora.seller.FirstList"
+            ></activity>
+    </application>
+
+</manifest>

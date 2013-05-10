@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Би борлуулагч</string>
+    <string name="menu_settings">Settings</string>
+	<string name="main_tv_shop">Дэлгүүр:</string>
+    <string name="main_tv_product">Бүтээгдэхүүн:</string>
+    <string name="main_tv_type">Төрөл:</string>
+    <string name="main_tv_date">Огноо:</string>
+    <string name="main_tv_description">Тайлбар:</string>
+    <string name="main_tv_number">Ширхэг:</string>
+    <string name="main_hint_description">Энд тайлбар бичнэ....</string>
+    <string name="main_btn_burtgeh">Борлуулах</string><string name="login_email">Таны и-мэйл хаяг :</string>
+    <string name="login_username">Хэрэглэгчийн нэр :</string>
+    <string name="login_pass">Нууц код :</string>
+    <string name="login_login">Нэвтрэх</string>
+    <string name="login_dont_remember_pass">Нууц үгээ мартсан бол энд дарна уу..</string>
+    <string name="login_welcome">Програмд тавтай морилно уу?</string>
+    <string name="main_menu_haih">Хайлт</string>
+    <string name="main_menu_burtgel">Бүртгэл</string>
+    <string name="main_menu_exit">Гарах</string>
+    <string name="link_to_register">Та Хандах эрхгүй бол энд дарна уу.</string>
+    <string name="login_fullname">Хэрэглэгчийн нэр:</string>
+    <string name="register_btn">Хэрэглэгч үүсгэх</string>
+    <string name="link_to_login">Хэрэглэгч үүсгэсэн бол энд дарж нэвтэрнэ үү!</string>
+    <string name="main_btn_add"/>
+    <string name="login_rememberme">Намайг сана.</string>
+    <string name="createuser_pass2">Нууц код (дахин) :</string>
+    <string name="main_menu_addShop">Дэлгүүр нэмэх</string>
+    <string name="add_shop">Нэмэх</string>
+    <string name="add_shop_description">Шинээр дэлгүүр нэмэх :</string>
+    <string name="shop_name">Дэлгүүрийн нэр :</string>
+    <string name="shop_address">Хаяг :</string>
+    <string name="Add">Нэмэх</string>
+    <string name="product_name">Бүтээгдэхүүний нэр :</string>
+    <string name="product_cost">"Бүтээгдэхүүний үнэ(нэгж) : "</string>
+    <string name="description">"	Энэхүү програм нь үндсэн 6 цэстэй.Цэс бүр өөрийн гэсэн онцлог үйлдэлтэй.Хурдан шуурхай үйлчилгээг эрхэм болгодог БОРЛУУЛАГЧ таны цаг зав хөнгөвчлөх, алдаагүй зөв тооцоо хийх, тайланг автоматаар дэлгэцэнд харуулах зэрэг олон олон давуу талтай."</string>
+    <string name="descriptionhello">""Сайн байна уу?</string>
+    <string name="btn_borluulah">Борлуулах</string>
+    <string name="savelist">Жагсаалтыг хадгалах</string>
+    <string name="currentDate">"Огноо : "</string>
+    <string name="ID">ID</string>
+    <string name="PNAME">Нэр</string>
+    <string name="COUNT">Ширхэг</string>
+    <string name="COST">Үнэ</string>
+    <string name="DATE">Огноо</string>
+    <string name="remember_me">Сана.</string>
+   
+</resources>
