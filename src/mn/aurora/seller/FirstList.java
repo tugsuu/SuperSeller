@@ -3,7 +3,6 @@ package mn.aurora.seller;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -36,7 +35,8 @@ public class FirstList extends Activity{
 		int[] to = new int[]{R.id.id, R.id.tv1};
 		cursorAdapt = new SimpleCursorAdapter(this, R.layout.row_first, cursor, from, to);
 		list.setAdapter(cursorAdapt);		
-//		list.setOnItemClickListener(listContentOnItemClickListener);
+		txt3.setText("adasasas");
+e//		list.setOnItemClickListener(listContentOnItemClickListener);
 		
 	}
 	

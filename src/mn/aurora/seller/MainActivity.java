@@ -19,27 +19,27 @@ public class MainActivity extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);		
-//		GridView gridview = (GridView)findViewById(R.id.gridView1);
+		GridView gridview = (GridView)findViewById(R.id.gridView1);
 		aboutBtn = (Button)findViewById(R.id.button1);
-//		gridview.setAdapter(new ImageAdapter(this));
+		gridview.setAdapter(new ImageAdapter(this));
 		aboutBtn.setOnClickListener(this);
-//		gridview.setOnItemClickListener(new OnItemClickListener() {
-//	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//	        	if(position==3){
-//	        		Intent i = new Intent(getApplicationContext(), ShopActivity.class);
-//	        		startActivity(i);
-//	        	}else if (position==4) {
-//	        		Intent i = new Intent(getApplicationContext(), ProductActivity.class);
-//	        		startActivity(i);
-//	        	}else if (position==0) {
-//	        		Intent i = new Intent(getApplicationContext(), SellProduct.class);
-//	        		startActivity(i);
-//	        	}else if (position==1) {
-//	        		Intent i = new Intent(getApplicationContext(), FirstList.class);
-//	        		startActivity(i);
-//	        	}
-//	        }
-//		});
+		gridview.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+	        	if(position==3){
+	        		Intent i = new Intent(getApplicationContext(), ShopActivity.class);
+	        		startActivity(i);
+	        	}else if (position==4) {
+	        		Intent i = new Intent(getApplicationContext(), ProductActivity.class);
+	        		startActivity(i);
+	        	}else if (position==0) {
+	        		Intent i = new Intent(getApplicationContext(), SellProduct.class);
+	        		startActivity(i);
+	        	}else if (position==1) {
+	        		Intent i = new Intent(getApplicationContext(), FirstList.class);
+	        		startActivity(i);
+	        	}
+	        }
+		});
 	}
 	@Override
 	public void onClick(View v) {
