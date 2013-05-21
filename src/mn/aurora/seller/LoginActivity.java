@@ -10,24 +10,20 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity{
+public class LoginActivity extends Activity {
 	
 	public static final String MY_PREFS = "SharedPreferences";
 	private SQLiteAdapter dbHelper;
-	TextView txt_forgetPass;
 	EditText et_name, et_pass;
-	Button btn_login,clearBtn;
+	Button btn_login, btn_exit;
 	CheckBox rememberDetails;
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreate(android.os.Bundle)
-	 */
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -39,19 +35,25 @@ public class LoginActivity extends Activity{
         editor.commit();
         dbHelper= new SQLiteAdapter(this);
         dbHelper.openToWrite();
-		
+		btn_exit = (Button)findViewById(R.id.btnExit);
         setContentView(R.layout.activity_login);
 		initControls();
+		
+//		btn_exit.setOnClickListener(new OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//			}
+//		});
 	}
 
 	 private void initControls() {
 	    	//Set the activity layout.
 		 	et_name = (EditText)findViewById(R.id.editText1);
 			et_pass = (EditText)findViewById(R.id.editText2);
-			btn_login = (Button)findViewById(R.id.button1);
-			txt_forgetPass = (TextView)findViewById(R.id.textView3);
-	    	clearBtn = (Button)findViewById(R.id.button1);
-	    	rememberDetails = (CheckBox) findViewById(R.id.checkBox1);
+			btn_login = (Button)findViewById(R.id.btn_login);
+	    	rememberDetails = (CheckBox)findViewById(R.id.checkBox1);
 	    	
 	    	//Create touch listeners for all buttons.
 	    	btn_login.setOnClickListener(new Button.OnClickListener(){
@@ -59,19 +61,6 @@ public class LoginActivity extends Activity{
 	    			LogMeIn(v);
 	    		}
 	    	});
-	    	
-	    	txt_forgetPass.setOnClickListener(new Button.OnClickListener(){
-	    		public void onClick (View v){
-	    			Register(v);
-	    		}
-	    	});
-	    	
-	    	clearBtn.setOnClickListener(new Button.OnClickListener(){
-	    		public void onClick (View v){
-	    			ClearForm();
-	    		}
-	    	});
-	 
 	    	
 	    	rememberDetails.setOnClickListener(new CheckBox.OnClickListener(){
 	    		public void onClick (View v){
@@ -90,13 +79,6 @@ public class LoginActivity extends Activity{
 	    		rememberDetails.setChecked(thisRemember);
 	    	}
 	    	
-	    }
-	    
-	    
-	   private void ClearForm() {
-	    	saveLoggedInUId(0,"","");
-	    	et_name.setText("");
-	    	et_pass.setText("");
 	    }
 	    
 	    /**
@@ -153,13 +135,6 @@ public class LoginActivity extends Activity{
 	    	}
 	    }
 	    
-	   
-	    private void Register(View v)
-	    {
-	    	Intent i = new Intent(v.getContext(), CreateUserActivity.class);
-	    	startActivity(i);
-	    	finish();
-	    }
 	    
 	    private void saveLoggedInUId(long id, String username, String password) {
 	    	SharedPreferences settings = getSharedPreferences(MY_PREFS, 0);

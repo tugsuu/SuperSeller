@@ -14,8 +14,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="mn.aurora.seller.MainActivity"
-            android:label="@string/app_name" >
+            android:name="mn.aurora.seller.FirstActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name="mn.aurora.seller.FirstActivity"
+            android:name="mn.aurora.seller.LoginActivity"
             ></activity>
         <activity 
             android:name="mn.aurora.seller.ShopActivity"
@@ -35,7 +35,7 @@
             android:name="mn.aurora.seller.CreateUserActivity"
             ></activity>
         <activity 
-            android:name="mn.aurora.seller.LoginActivity"
+            android:name="mn.aurora.seller.MainActivity"
             ></activity>
         <activity 
             android:name="mn.aurora.seller.SellProduct"

@@ -5,11 +5,14 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.LayoutParams;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,10 +24,10 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class ProductActivity extends Activity{
+public class ProductActivity extends Activity implements OnClickListener{
 	
 	EditText inputContent1, inputContent2;
-	Button buttonAdd, buttonDeleteAll;
+	Button buttonAdd, buttonDeleteAll, btnBack;
 	private SQLiteAdapter mySQLiteAdapter;
 	ListView listContent;
 	ArrayAdapter<String> adapt;
@@ -36,11 +39,12 @@ public class ProductActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_LEFT_ICON);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_product);
         addToSpin();
         inputContent1 = (EditText)findViewById(R.id.editText1);
         inputContent2 = (EditText)findViewById(R.id.editText2);
+        btnBack = (Button)findViewById(R.id.backProduct);
         buttonAdd = (Button)findViewById(R.id.button1);
         listContent = (ListView)findViewById(R.id.listView1);
         
@@ -53,15 +57,16 @@ public class ProductActivity extends Activity{
         cursorAdapter =
         	new SimpleCursorAdapter(this, R.layout.row_product, cursor, from, to);
         listContent.setAdapter(cursorAdapter);
-        buttonAdd.setOnClickListener(buttonAddOnClickListener);
+        buttonAdd.setOnClickListener(this);
+        btnBack.setOnClickListener(this);
         listContent.setOnItemClickListener(listContentOnItemClickListener);
         
     }
     
-    Button.OnClickListener buttonAddOnClickListener = new Button.OnClickListener(){
-
-		@Override
-		public void onClick(View arg0) {
+    @Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v==buttonAdd) {
 			Integer cost = Integer.parseInt(inputContent2.getText().toString()); 
 			String data1 = inputContent1.getText().toString();
 			String data3 = spin.getSelectedItem().toString();
@@ -69,10 +74,31 @@ public class ProductActivity extends Activity{
 			updateList();
 			clearField();
 		}
-  	
-  };
-  
-  private ListView.OnItemClickListener listContentOnItemClickListener
+		if (v==btnBack) {
+			if(DataManager.getForm()==1)
+			{
+				Intent main = new Intent(getApplicationContext(),MainActivity.class);
+				startActivity(main);
+				finish();
+			}
+		}
+	}
+
+    
+  @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+	  	if(DataManager.getForm()==1)
+		{
+			Intent main = new Intent(getApplicationContext(),MainActivity.class);
+			startActivity(main);
+			finish();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+
+private ListView.OnItemClickListener listContentOnItemClickListener
   = new ListView.OnItemClickListener(){
 
 		@Override
@@ -108,13 +134,7 @@ public class ProductActivity extends Activity{
           dialog_cost.setInputType(InputType.TYPE_CLASS_NUMBER);
           dialog_cost.setLayoutParams(dialog2_LayoutParams);
           dialog_cost.setText(item_content2);
-          
-//          final Spinner dialog3 = new Spinner(ProductActivity.this);
-//          LayoutParams dialog4_LayoutParams
-//           = new LayoutParams();
-//          dialog3.setLayoutParams(dialog3_LayoutParams);
-//          dialog3.setAdapter(adapt);
-//          
+                  
           LinearLayout layout = new LinearLayout(ProductActivity.this);
           layout.setOrientation(LinearLayout.VERTICAL);
           layout.setPadding(10, 0, 10, 5);
@@ -157,16 +177,11 @@ public class ProductActivity extends Activity{
 		inputContent1.setText("");
 		inputContent2.setText("");
 	}
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		mySQLiteAdapter.close();
-	}
-
+	
 	private void updateList(){
 		cursor.requery();
-  }
+	}
+	
 	public void addToSpin()
 	{
 		spin = (Spinner)findViewById(R.id.spinner1);		
@@ -177,6 +192,13 @@ public class ProductActivity extends Activity{
 		adapt = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_dropdown_item,list); 
 		spin.setAdapter(adapt);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		mySQLiteAdapter.close();
 	}
 	
 }

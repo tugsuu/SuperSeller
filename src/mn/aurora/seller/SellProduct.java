@@ -6,10 +6,13 @@ import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +29,7 @@ public class SellProduct extends Activity implements OnClickListener{
 	EditText et_count;
 	Spinner spinShop, spinProduct;
 	TextView tv_date;
-	Button add;
+	Button add, btnSell;
 	Date date;
 	CharSequence s;
 	ListView list;
@@ -35,6 +38,7 @@ public class SellProduct extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_borluulah);
 		
 		sqLiteDatabase = new SQLiteAdapter(this);
@@ -45,7 +49,7 @@ public class SellProduct extends Activity implements OnClickListener{
 		add = (Button)findViewById(R.id.btn_addToList);
 		et_count = (EditText)findViewById(R.id.et_count);
 		list = (ListView)findViewById(R.id.list); 
-		
+		btnSell = (Button)findViewById(R.id.btnBackBor);
 		Calendar c = Calendar.getInstance();
 		System.out.println("Current time => "+c.getTime());
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -61,6 +65,7 @@ public class SellProduct extends Activity implements OnClickListener{
         cursorAdapter =	new SimpleCursorAdapter(this, R.layout.row_second, cursor, from, to);
         list.setAdapter(cursorAdapter);		
 		
+        btnSell.setOnClickListener(this);
 		add.setOnClickListener(this);
 		
 	}
@@ -78,8 +83,17 @@ public class SellProduct extends Activity implements OnClickListener{
 			updateList();
 			
 		}
+		if (v==btnSell) {
+			if(DataManager.getForm()==1)
+			{
+				Intent main = new Intent(getApplicationContext(),MainActivity.class);
+				startActivity(main);
+				finish();
+			}
+		}
 	}
 	
+
 	private void addValueToShop()
 	{
 				
@@ -109,7 +123,17 @@ public class SellProduct extends Activity implements OnClickListener{
 		
 	}
 
-
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		if(DataManager.getForm()==1)
+		{
+			Intent main = new Intent(getApplicationContext(),MainActivity.class);
+			startActivity(main);
+			finish();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 	
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

@@ -18,13 +18,4 @@
         android:text="@string/description"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/dismiss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginRight="21dp"
-        android:background="@drawable/closedialog" />
-
 </RelativeLayout>

@@ -3,91 +3,100 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="fill_horizontal"
-    android:background="@drawable/back2"
-    android:orientation="vertical"
-    android:padding="20dp" >
-    
-     <ImageView
-         android:id="@+id/IV_signout"
-         android:layout_width="108dp"
-         android:layout_height="76dp"
-         android:layout_gravity="center_horizontal"
-         android:src="@drawable/create_user" />
+    android:background="@drawable/back"
+    android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/login_username"
-                android:textColor="#372c24" />
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header_back" >
 
-            <EditText
-                android:id="@+id/createuser_et_name"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dip"
-                android:layout_marginTop="5dp"
-                android:drawableLeft="@drawable/user"
-                android:singleLine="true" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/hereglegch_uusgeh"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
         
             <!-- Password Label -->
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/login_pass"
-                android:textColor="#372c24" />
-
-            <EditText
-                android:id="@+id/createuser_et_pass"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/pass"
-                android:ems="10"
-                android:inputType="textPassword" >
-
-                <requestFocus />
-            </EditText>
             <!-- Login button -->
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/createuser_pass2"
-                android:textColor="#372c24" />
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <EditText
-                    android:id="@+id/createuser_pass2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:drawableLeft="@drawable/pass"
-                    android:ems="10"
-                    android:inputType="textPassword" />
-
-                <ImageButton
-                    android:id="@+id/createuser_clear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/clear" />
-
-            </LinearLayout>
 
             <!-- Link to Registration Screen -->
 
-            <Button
-                android:id="@+id/createuser_btn_create"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp"
-                android:text="@string/register_btn" />
+                android:layout_gravity="center|bottom|center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="70dp"
+                    android:src="@drawable/line" />
+
+                <EditText
+                    android:id="@+id/createuser_et_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:drawableLeft="@drawable/name_left"
+                    android:ems="10"
+                    android:hint="Хэрэглэгчийн нэр"
+                    android:singleLine="true"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/createuser_et_pass"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/pass_left"
+                    android:ems="10"
+                    android:hint="Нууц код"
+                    android:inputType="textPassword"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content" >
+
+                    <EditText
+                        android:id="@+id/createuser_pass2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/pass_left"
+                        android:ems="10"
+                        android:hint="Нууц код(дахин)"
+                        android:inputType="textPassword"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/createuser_btn_create"
+                    style="@style/color_blue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/register_btn" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/line" />
+
+            </LinearLayout>
 
 </LinearLayout>

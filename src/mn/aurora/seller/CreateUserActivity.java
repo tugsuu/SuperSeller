@@ -45,23 +45,14 @@ public class CreateUserActivity extends Activity{
 	 	newPassword = (EditText) findViewById(R.id.createuser_et_pass);
 	 	newConfiPass = (EditText) findViewById(R.id.createuser_pass2);
 	 	registerButton = (Button) findViewById(R.id.createuser_btn_create);
-	 	clearButton = (ImageButton) findViewById(R.id.createuser_clear);
+
     	
 	 	registerButton.setOnClickListener(new Button.OnClickListener() { 
 	 		public void onClick (View v){ 
 	 			RegisterMe(v); }});
 	 	
-	 	clearButton.setOnClickListener(new Button.OnClickListener() { 
-    		public void onClick (View v){ 
-    			ClearForm(); }});
     }
-    	private void ClearForm()
-        {
-        	saveLoggedInUId(0, "", "");
-        	newUsername.setText("");
-        	newPassword.setText("");
-        	newConfiPass.setText("");
-        }
+    	
     	private void RegisterMe(View v)
         {
     		//Get user details. 

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.LayoutParams;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -19,10 +22,10 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-public class ShopActivity extends Activity{
+public class ShopActivity extends Activity implements OnClickListener{
 
 	EditText etName,etAddress;
-	Button buttonAdd;
+	Button btnAdd, btnBack;
 	ListView listContent;
 	private SQLiteAdapter mySQLiteAdapter;
 	SimpleCursorAdapter cursorAdapter;
@@ -36,9 +39,10 @@ public class ShopActivity extends Activity{
 		
 		etName = (EditText)findViewById(R.id.editText1);
 		etAddress = (EditText)findViewById(R.id.editText2);
-		buttonAdd = (Button)findViewById(R.id.button1);
+		btnAdd = (Button)findViewById(R.id.button1);
 //      buttonDeleteAll = (Button)findViewById(R.id.deleteall);
-      
+		btnBack = (Button)findViewById(R.id.btnBack);
+		
 		listContent = (ListView)findViewById(R.id.listView1);
 		mySQLiteAdapter = new SQLiteAdapter(this);
 		mySQLiteAdapter.openToWrite();
@@ -50,16 +54,23 @@ public class ShopActivity extends Activity{
 		listContent.setAdapter(cursorAdapter);
 		
 		listContent.setOnItemClickListener(listContentOnItemClickListener);
-		buttonAdd.setOnClickListener(buttonAddOnClickListener);
-		
+		btnAdd.setOnClickListener(this);
+		btnBack.setOnClickListener(this);
       
   }
   
-  Button.OnClickListener buttonAddOnClickListener = new Button.OnClickListener(){
-
-		@Override
-		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v==btnBack) {
+			if(DataManager.getForm()==1)
+			{
+				Intent main = new Intent(getApplicationContext(),MainActivity.class);
+				startActivity(main);
+				finish();
+			}
+		}
+		if (v==btnAdd) {
 			String name = etName.getText().toString().trim();
 			String address = etAddress.getText().toString().trim();
 			
@@ -86,9 +97,28 @@ public class ShopActivity extends Activity{
 				
 			}
 		}
-  };
+	}
+	
+	
     
-  private ListView.OnItemClickListener listContentOnItemClickListener = new ListView.OnItemClickListener(){
+  @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+	  	if (keyCode == KeyEvent.KEYCODE_BACK) {
+	  		if(DataManager.getForm()==1)
+			{
+				Intent main = new Intent(getApplicationContext(),MainActivity.class);
+				startActivity(main);
+				finish();
+			}
+		}
+	  
+		return super.onKeyDown(keyCode, event);
+	}
+
+
+
+private ListView.OnItemClickListener listContentOnItemClickListener = new ListView.OnItemClickListener(){
 
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,
@@ -175,5 +205,6 @@ public class ShopActivity extends Activity{
 
 	private void updateList(){
 		cursor.requery();
-  }	
+  }
+	
  }

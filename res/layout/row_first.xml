@@ -23,7 +23,8 @@
             android:id="@+id/sb1"
             android:layout_width="163dp"
             android:layout_height="wrap_content"
-            android:max="100" />
+            android:max="100"
+            android:thumb="@drawable/seek_thumb_normal" />
 
         <TextView
             android:id="@+id/tv3"
