@@ -45,12 +45,12 @@
     <string name="COST">Үнэ</string>
     <string name="DATE">Огноо</string>
     <string name="remember_me">Сана.</string>
-    <string name="nevtreh">Нэвтрэх</string>
+    <string name="nevtreh">НЭВТРЭХ</string>
     <string name="borluulah">Борлуулах</string>
     <string name="burtgel">Бүртгэл</string>
     <string name="hereglegch_uusgeh">Хэрэглэгч үүсгэх</string>
     <string name="buteegdehuun">Бүтээгдэхүүн</string>
     <string name="delguur">Дэлгүүр</string>
-    <string name="undsen_tsonh">ЦЭС</string>
+    <string name="undsen_tsonh">ҮНДСЭН ЦЭС</string>
    
 </resources>

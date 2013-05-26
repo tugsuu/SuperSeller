@@ -67,6 +67,19 @@ public class SQLiteAdapter{
 			+ SECOND_PNAME + " text not null, "
 			+ SECOND_COUNT + " integer not null);";
 	
+	/*----------------------------- Second TABLE -------------------------------------------*/
+	public static final String FIRST_TABLE = "first";
+	public static final String FIRST_ID = "f_id";
+	public static final String FIRST_PNAME = "Name";
+	public static final String FIRST_PCOUNT = "date";
+	public static final String FIRST_PDATE = "pName";
+	private static final String SCRIPT_CREATE_FIRST_TABLE =
+			"create table if not exists " + FIRST_TABLE + " ("
+			+ FIRST_ID + " integer primary key autoincrement, "
+			+ FIRST_PNAME + " text not null, "
+			+ FIRST_PCOUNT + " integer not null, "
+			+ FIRST_PDATE + " text not null);";
+	
 	
 	
 	private SQLiteHelper sqLiteHelper;
@@ -103,11 +116,15 @@ public class SQLiteAdapter{
 		return sqLiteDatabase.insert(SECOND_TABLE, null, content);
 	}
 	
+	
 	public Cursor queueSecondTable(){
 		
-		String query = "SELECT s._id, s.pName, s.count, s.count*p.pCost as Une, s.date FROM "
-				+ "second as s INNER JOIN product as p ON s.pName = p.pName";
-		Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+		String shop = DataManager.getShop();
+		String date = DataManager.getDate();
+		String query = "SELECT s._id, s.shName, s.pName, s.count, s.count*p.pCost as Une, s.date FROM "
+				+ "second as s INNER JOIN product as p ON s.pName = p.pName WHERE s.shName = "+"'"+shop+"'"+" AND s.date = "+"'"+date+"'";
+//		String[] whereClause = {shop, date};
+		Cursor cursor = sqLiteDatabase.rawQuery(query, null); 
 		
 		return cursor;
 	}
@@ -285,6 +302,7 @@ public class SQLiteAdapter{
 			db.execSQL(SCRIPT_CREATE_PRODUCT_TABLE);
 			db.execSQL(SCRIPT_CREATE_USER_TABLE);
 			db.execSQL(SCRIPT_CREATE_SECOND_TABLE);
+			db.execSQL(SCRIPT_CREATE_FIRST_TABLE);
 			
 		}
 
@@ -298,6 +316,7 @@ public class SQLiteAdapter{
 			sqLiteDatabase.execSQL("DROP TABLE IF EXISTS shop");
 			sqLiteDatabase.execSQL("DROP TABLE IF EXISTS second");
 			sqLiteDatabase.execSQL("DROP TABLE IF EXISTS product");
+			sqLiteDatabase.execSQL("DROP TABLE IF EXISTS first");
 			onCreate(sqLiteDatabase);
 		}
 	

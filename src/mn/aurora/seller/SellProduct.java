@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SellProduct extends Activity implements OnClickListener{
 	private SQLiteAdapter sqLiteDatabase;
@@ -29,8 +30,9 @@ public class SellProduct extends Activity implements OnClickListener{
 	EditText et_count;
 	Spinner spinShop, spinProduct;
 	TextView tv_date;
-	Button add, btnSell;
+	Button btnAdd, btnBack;
 	Date date;
+
 	CharSequence s;
 	ListView list;
 	
@@ -43,49 +45,53 @@ public class SellProduct extends Activity implements OnClickListener{
 		
 		sqLiteDatabase = new SQLiteAdapter(this);
 		sqLiteDatabase.openToWrite();
+		
 		spinProduct = (Spinner)findViewById(R.id.spin_pro);
 		spinShop = (Spinner)findViewById(R.id.spin_shop);
-		tv_date = (TextView)findViewById(R.id.textView3);
-		add = (Button)findViewById(R.id.btn_addToList);
+		tv_date = (TextView)findViewById(R.id.textView9);
+		btnAdd = (Button)findViewById(R.id.btn_addToList);
 		et_count = (EditText)findViewById(R.id.et_count);
 		list = (ListView)findViewById(R.id.list); 
-		btnSell = (Button)findViewById(R.id.btnBackBor);
+		btnBack = (Button)findViewById(R.id.btnBackBor);
 		Calendar c = Calendar.getInstance();
 		System.out.println("Current time => "+c.getTime());
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		formattedDate = df.format(c.getTime());
-//		tv_date.setText(formattedDate);
-				
+		tv_date.setText(formattedDate);
+	
 		addValueToShop();
 		addValueToProduct();
 		
-		cursor = sqLiteDatabase.queueSecondTable();
-        String[] from = new String[]{SQLiteAdapter.SECOND_ID, SQLiteAdapter.SECOND_PNAME, SQLiteAdapter.SECOND_COUNT,"Une", SQLiteAdapter.SECOND_DATE};
-        int[] to = new int[]{R.id.id, R.id.text1, R.id.text2, R.id.text3, R.id.text4};
-        cursorAdapter =	new SimpleCursorAdapter(this, R.layout.row_second, cursor, from, to);
-        list.setAdapter(cursorAdapter);		
 		
-        btnSell.setOnClickListener(this);
-		add.setOnClickListener(this);
+//		list.setVisibility(View.GONE);
+        
+        btnBack.setOnClickListener(this);
+		btnAdd.setOnClickListener(this);
 		
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if(v==add)
+		if(v==btnAdd)
 		{	
+			DataManager.setDate(tv_date.getText().toString());
+			DataManager.setShop(spinShop.getSelectedItem().toString());
+			Toast.makeText(this, DataManager.getDate(), Toast.LENGTH_SHORT).show();
 			Integer cost = Integer.parseInt(et_count.getText().toString()); 
 			String shname = spinShop.getSelectedItem().toString();
 			String pname = spinProduct.getSelectedItem().toString();
 			sqLiteDatabase.insertToSecond(shname, pname, cost, formattedDate);
+			updateList(); 
 			et_count.setText("");
-			updateList();
 			
+			
+//	        list.setVisibility(View.VISIBLE);
+	       
 		}
-		if (v==btnSell) {
+		if (v==btnBack) {
 			if(DataManager.getForm()==1)
-			{
+			{	
 				Intent main = new Intent(getApplicationContext(),MainActivity.class);
 				startActivity(main);
 				finish();
@@ -128,6 +134,7 @@ public class SellProduct extends Activity implements OnClickListener{
 		// TODO Auto-generated method stub
 		if(DataManager.getForm()==1)
 		{
+			
 			Intent main = new Intent(getApplicationContext(),MainActivity.class);
 			startActivity(main);
 			finish();
@@ -144,4 +151,15 @@ public class SellProduct extends Activity implements OnClickListener{
 	private void updateList(){
 		cursor.requery();
   }
+	
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		cursor = sqLiteDatabase.queueSecondTable();
+        String[] from = new String[]{SQLiteAdapter.SECOND_ID, SQLiteAdapter.SECOND_SHOP, SQLiteAdapter.SECOND_PNAME, SQLiteAdapter.SECOND_COUNT,"Une", SQLiteAdapter.SECOND_DATE};
+        int[] to = new int[]{R.id.id, R.id.text1, R.id.text2, R.id.text3, R.id.text4, R.id.text5};
+        cursorAdapter =	new SimpleCursorAdapter(this, R.layout.row_second, cursor, from, to);
+        list.setAdapter(cursorAdapter);
+	}
+	
 }

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content" />
 
         <SeekBar
-            android:id="@+id/sb1"
+            android:id="@+id/firstSeekbar"
             android:layout_width="163dp"
             android:layout_height="wrap_content"
             android:max="100"

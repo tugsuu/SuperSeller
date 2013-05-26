@@ -31,7 +31,7 @@ public class FirstList extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_firstlist);
 		
 		txt3 = (TextView)findViewById(R.id.text3);
-		sb = (SeekBar)findViewById(R.id.sb1);
+		sb = (SeekBar)findViewById(R.id.firstSeekbar);
 		list = (ListView)findViewById(R.id.listView1);
 		btnBack = (Button)findViewById(R.id.backFirstList);
 		
@@ -45,7 +45,26 @@ public class FirstList extends Activity implements OnClickListener{
 		list.setAdapter(cursorAdapt);		
 		
 //		list.setOnItemClickListener(listContentOnItemClickListener);
-		
+//		sb.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//			
+//			@Override
+//			public void onStopTrackingTouch(SeekBar seekBar) {
+//				// TODO Auto-generated method stub
+//			}
+//			
+//			@Override
+//			public void onStartTrackingTouch(SeekBar seekBar) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onProgressChanged(SeekBar seekBar, int progress,
+//					boolean fromUser) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//		});
 	}
 	
 	@Override
@@ -68,7 +87,7 @@ public class FirstList extends Activity implements OnClickListener{
 //				long arg3) {
 //			// TODO Auto-generated method stub
 ////			Cursor cursor = (Cursor) arg0.getItemAtPosition(position);
-//			
+//			sb.set
 //			
 //		}
 //	

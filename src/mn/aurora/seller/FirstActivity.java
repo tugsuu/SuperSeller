@@ -25,7 +25,7 @@ public class FirstActivity extends Activity{
 			public void run()
 			{
 				try {
-						sleep(3000);
+						sleep(2000);
 						Move();
 				} catch (Exception e) {
 					// TODO: handle exception

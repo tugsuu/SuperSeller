@@ -21,7 +21,7 @@ public class LoginActivity extends Activity {
 	public static final String MY_PREFS = "SharedPreferences";
 	private SQLiteAdapter dbHelper;
 	EditText et_name, et_pass;
-	Button btn_login, btn_exit;
+	Button btn_login;
 	CheckBox rememberDetails;
 
 	@Override
@@ -35,7 +35,6 @@ public class LoginActivity extends Activity {
         editor.commit();
         dbHelper= new SQLiteAdapter(this);
         dbHelper.openToWrite();
-		btn_exit = (Button)findViewById(R.id.btnExit);
         setContentView(R.layout.activity_login);
 		initControls();
 		
